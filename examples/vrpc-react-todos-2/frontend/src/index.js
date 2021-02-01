@@ -2,14 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
-import { createVrpcProvider } from 'react-vrpc'
+import { createVrpcProvider } from './react-vrpc'
 
 const VrpcProvider = createVrpcProvider({
   domain: 'public.vrpc',
   backends: {
     todos: {
-      agent: 'burkhards-advanced-todos-agent',
-      className: 'Todo'
+      agent: 'benni-tryout',
+      // className: 'Todo1'
+      className: /Todo.*/
     }
   }
 })

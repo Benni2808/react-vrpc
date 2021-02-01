@@ -4,7 +4,7 @@ const EventEmitter = require('events')
  * The Todo class manages a single todo item
  * @param {string} text The todo text
  */
-class Todo1 extends EventEmitter {
+class Todo2 extends EventEmitter {
   constructor (text) {
     super()
     this._data = { text, completed: false }
@@ -27,4 +27,4 @@ class Todo1 extends EventEmitter {
   }
 }
 
-module.exports = Todo1
+module.exports = Todo2

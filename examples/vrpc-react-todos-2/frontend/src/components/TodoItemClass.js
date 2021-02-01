@@ -1,5 +1,5 @@
 import React from 'react'
-import { withManagedInstance } from 'react-vrpc'
+import { withManagedInstance } from '../react-vrpc'
 
 class TodoItem extends React.Component {
   constructor () {

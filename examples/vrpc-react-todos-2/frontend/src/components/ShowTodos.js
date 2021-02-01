@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useBackend } from 'react-vrpc'
-import TodoItem from './TodoItemClass'
+import { useBackend } from '../react-vrpc'
+// import TodoItem from './TodoItemClass'
+import TodoItem from './TodoItem'
 import Filter from './Filter'
 
 function ShowTodos () {
@@ -8,6 +9,11 @@ function ShowTodos () {
   const { backend } = useBackend('todos')
 
   const { ids } = backend
+  const getItems = async () => {
+    const items = await backend.callAll('getData')
+    console.log(items)
+  }
+  console.log('## ids', getItems())
   return (
     <div>
       <ul>

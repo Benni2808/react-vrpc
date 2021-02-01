@@ -73,6 +73,7 @@ class VrpcBackendMaker extends Component {
       await client.connect()
 
       client.on('instanceNew', async (added, { className }) => {
+        console.log('## instanceNew', client, className)
         if (!className) return
         const keys = this.filterBackends(className, backends)
         for (const key of keys) {
@@ -88,8 +89,10 @@ class VrpcBackendMaker extends Component {
               if (debug) console.error(`Could not attach to backend instance '${instance}', because: ${err.message}`)
               this.setBackendState(key, null, false, err)
             }
+
             // This backend is interested in a specific set of instances
           } else {
+            console.log('## instanceNew', client)
             this.setState(prevState => {
               const { backend, loading, error, refresh } = prevState[key][key]
               if (backend && backend.ids) {
@@ -288,7 +291,8 @@ export function withManagedInstance (backend, PassedComponent) {
 
     componentDidMount () {
       const { id, vrpc } = this.props
-      const managingBackend = this.props[backend].backend
+        console.log('### test', id, vrpc)
+        const managingBackend = this.props[backend].backend
       if (!id) {
         this.setState({
           error: new Error('Parent component did not provide an "id" property')
@@ -312,6 +316,7 @@ export function withManagedInstance (backend, PassedComponent) {
           id,
           { backend: null, loading: true, error: null }
         )
+
         vrpc.client.getInstance(id)
           .then((proxy) => {
             const managedInstance = {
