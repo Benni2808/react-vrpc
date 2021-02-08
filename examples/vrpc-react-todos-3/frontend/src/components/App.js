@@ -2,7 +2,6 @@ import React from 'react'
 import AddTodo from './AddTodo'
 import ShowTodos from './ShowTodos'
 import { useBackend } from 'react-vrpc'
-import Test from './Test'
 
 function App () {
   const { loading, error } = useBackend('todos')
@@ -13,7 +12,6 @@ function App () {
   return (
     <>
       <h1>Todo List</h1>
-      <Test />
       <AddTodo />
       <ShowTodos />
     </>

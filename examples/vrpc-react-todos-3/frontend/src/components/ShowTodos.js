@@ -6,11 +6,12 @@ import Filter from './Filter'
 function ShowTodos () {
   const [filter, setFilter] = useState('all')
   const { backend } = useBackend('todos')
-
-  const { client, loading, error } = useClient()
+  const client = useClient()
 
   // console.log('## backend', backend.callAll('getData'))
-  console.log(loading, client, error)
+  console.log(client)
+
+  // backend.callAll('getData').then(x => console.log(x))
 
   const { ids } = backend
   return (
